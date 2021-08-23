@@ -12,7 +12,8 @@ import Login from "./components/Login";
 import PrivateRoute from "./components/PrivateRoute";
 import Logout from "./components/Logout";
 import ItemCreation from './components/ItemCreation'
-
+import ItemList from "./components/ItemList";
+import Item from './components/Item'
 
 
 //initial values for state
@@ -110,7 +111,7 @@ function App() {
 
       <Switch>
         <PrivateRoute exact path = '/protected' component = {ItemCreation}/>
-        <PrivateRoute exact path = '/item-list' component = {ItemList}/>
+        <Route path = '/item-list' component = {ItemList}/>
         <PrivateRoute path = '/logout' component = {Logout}/>
         <Route path="/signup">
           <Signup
