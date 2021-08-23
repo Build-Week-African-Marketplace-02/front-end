@@ -50,6 +50,15 @@ function App() {
     setUsers(newUser);
   };
 
+  //Login button submit
+  const logInSubmit = () => {
+    const loggedUser= {
+      username: formValues.email.trim(),
+      password: formValues.password.trim()
+    };
+
+  }
+
   return (
     <div className="App">
       <h1>APP JS</h1>
@@ -61,7 +70,13 @@ function App() {
         disabled={disabled}
         errors={formErrors}
       />
-      <Login />
+      <Login 
+        values={formValues}
+        change={inputChange}
+        submit={logInSubmit}
+        disabled={disabled}
+        errors={formErrors}
+      />
     </div>
   );
 }
