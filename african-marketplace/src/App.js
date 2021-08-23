@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 import "./App.css";
 
 import * as yup from "yup";
 import SignupSchema from "./validation/signupSchema";
+import axiosWithAuth from './components/axiosWithAuth'
 
 import Home from "./components/Home";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+
 
 //initial values for state
 
@@ -80,9 +82,25 @@ function App() {
 
   }
 
+  const handleLogout = (e) => { //api call to remove token when log out is clicked
+    e.preventDefault()
+    axiosWithAuth()
+      .post('http://localhost:5000/api/logout')
+      .then(res=> {
+        localStorage.removeItem("token")
+        window.location.href = 'http://localhost:3000/api/login'
+      })
+  }
+
   return (
     <div className="App">
-      <h1>APP JS</h1>
+      <div>
+        <nav>
+          <a><Link to='/'>Home</Link></a>
+          <a><Link to='/login'>Login</Link></a>
+          <a onClick={handleLogout}>Logout</a>
+        </nav>
+      </div>
 
       <Switch>
         <Route path="/signup">
@@ -94,7 +112,7 @@ function App() {
             errors={formErrors}
           />
         </Route>
-<Route path="/login">
+        <Route path="/login">
           <Login 
         values={formValues}
         change={inputChange}
