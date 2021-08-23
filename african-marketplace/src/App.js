@@ -8,6 +8,8 @@ import SignupSchema from "./validation/signupSchema";
 import Home from "./components/Home";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import PrivateRoute from "./components/PrivateRoute";
+import Logout from "./components/Logout";
 
 //initial values for state
 
@@ -85,6 +87,8 @@ function App() {
       <h1>APP JS</h1>
 
       <Switch>
+        <PrivateRoute exact path = '/protected' component = {ItemCreation}/>
+        <PrivateRoute path = '/logout' component = {Logout}/>
         <Route path="/signup">
           <Signup
             values={formValues}
