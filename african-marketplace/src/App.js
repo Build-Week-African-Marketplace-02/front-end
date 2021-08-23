@@ -12,6 +12,7 @@ import Login from "./components/Login";
 import PrivateRoute from "./components/PrivateRoute";
 import Logout from "./components/Logout";
 import ItemCreation from './components/ItemCreation'
+import Item from './components/Item'
 
 
 //initial values for state
@@ -126,10 +127,18 @@ function App() {
         errors={formErrors}
       />
         </Route>
+
+        <Route path="/item/:id">
+              <Item/>
+            </Route>
+
         <Route path="/">
           <Home />
         </Route>
       </Switch>
+
+
+
       {users.map((user, index) => {
         return <User key={index} details={user} />;
       })}
