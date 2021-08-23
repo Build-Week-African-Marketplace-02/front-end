@@ -71,9 +71,19 @@ function App() {
     SignupSchema.isValid(formValues).then(valid => setDisabled(!valid));
   }, [formValues]);
 
+  //Login button submit
+  const logInSubmit = () => {
+    const loggedUser= {
+      username: formValues.email.trim(),
+      password: formValues.password.trim()
+    };
+
+  }
+
   return (
     <div className="App">
       <h1>APP JS</h1>
+
       <Switch>
         <Route path="/signup">
           <Signup
@@ -84,6 +94,15 @@ function App() {
             errors={formErrors}
           />
         </Route>
+<Route path="/login">
+          <Login 
+        values={formValues}
+        change={inputChange}
+        submit={logInSubmit}
+        disabled={disabled}
+        errors={formErrors}
+      />
+        </Route>
         <Route path="/">
           <Home />
         </Route>
@@ -91,6 +110,7 @@ function App() {
       {users.map((user, index) => {
         return <User key={index} details={user} />;
       })}
+
     </div>
   );
 }
