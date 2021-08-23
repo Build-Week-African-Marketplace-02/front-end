@@ -147,3 +147,4 @@ const User = ({ details }) => {
     </div>
   );
 };
+ 
