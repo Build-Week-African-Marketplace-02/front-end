@@ -1,23 +1,67 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+
+import Home from "./components/Home";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
+
+//initial values for state
+
+const initialFormValues = {
+  name: "",
+  password: "",
+  email: ""
+};
+//initial error state
+const initialFormErrors = {
+  name: "",
+  password: "",
+  email: ""
+};
+
+const initialUsers = [];
+const initialDisabled = true;
 
 function App() {
+  //function to detect change in input feilds
+  const inputChange = (name, value) => {
+    setFormValues({
+      ...formValues,
+      [name]: value
+    });
+  };
+  //set up state
+  const [users, setUsers] = useState(initialUsers);
+  const [formValues, setFormValues] = useState(initialFormValues);
+  const [formErrors, setFormErrors] = useState(initialFormErrors);
+  const [disabled, setDisabled] = useState(initialDisabled);
+
+  //POST new user
+  const postNewUser = newUser => {
+    setFormValues(initialFormValues);
+  };
+  //Sign up button submit
+  const signUpSubmit = () => {
+    const newUser = {
+      name: formValues.name.trim(),
+      password: formValues.password.trim(),
+      email: formValues.email.trim()
+    };
+    setUsers(newUser);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>APP JS</h1>
+      <Home />
+      <Signup
+        values={formValues}
+        change={inputChange}
+        submit={signUpSubmit}
+        disabled={disabled}
+        errors={formErrors}
+      />
+      <Login />
     </div>
   );
 }
