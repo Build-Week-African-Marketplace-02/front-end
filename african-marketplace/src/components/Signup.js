@@ -70,7 +70,7 @@ const initialFormErrors = {
 };
 
 const initialUsers = [];
-const initialDisabled = true;
+const initialDisabled = false;
 
 export default function Signup() {
   const [users, setUsers] = useState(initialUsers);
@@ -108,6 +108,7 @@ export default function Signup() {
   const postNewUser = newUser => {
     //eventual POST request using axios will go here
     axios
+
       .post("https://african-marketplace-44.herokuapp.com/api/auth/register", newUser)
         .then(res => {
           setUsers([res.data, ...users]);
@@ -118,6 +119,7 @@ export default function Signup() {
         .finally(() => {
           setFormValues(initialFormValues);
         })
+
   };
   //Sign up button submit
   const signUpSubmit = () => {
@@ -129,10 +131,11 @@ export default function Signup() {
     postNewUser(newUser);
   };
   //side effects
-  useEffect(() => {
-    SignupSchema.isValid(formValues)
-      .then(valid => setDisabled(valid));
-  }, [formValues]);
+
+  // useEffect(() => {
+  //   SignupSchema.isValid(formValues).then(valid => setDisabled(!valid));
+  // }, [formValues]);
+
   const onSubmit = e => {
     e.preventDefault();
     signUpSubmit();
