@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useHistory } from "react-router";
+import { ValidationError } from "yup";
 
 const initialFormValues = {
   username: "",
@@ -13,6 +14,7 @@ const initialFormErrors = {
   password: ""
 };
 
+const initialLogin = []
 const initialDisabled = true;
 
 export default function Login() {
@@ -24,7 +26,7 @@ export default function Login() {
   };
   //my code starts here
   //state
-  const [user, setUser] = useState(initialState);
+  const [user, setUser] = useState(initialLogin);
   const { push } = useHistory();
 
   const [formValues, setFormValues] = useState(initialFormValues);
@@ -38,20 +40,20 @@ export default function Login() {
       [name]: value
     });
   };
+
   //POST new user
-  const postLoggedUser = loggedUser => {
+
     //eventual POST request using axios will go here
-    setUser([loggedUser, ...user]);
-    setFormValues(initialFormValues);
-  };
+  //   setUser([loggedUser, ...user]);
+  //   setFormValues(initialFormValues);
+  // };
+
+
   //Sign up button submit
-  const login = () => {
-    const loggedUser = {
-      username: formValues.username.trim(),
-      password: formValues.password.trim()
-    };
-    axios
-      .post("http://fakeapi.com", user.credentials)
+  // const login = () => {
+    const postLoggedUser = loggedUser => {
+      axios
+      .post("https://african-marketplace-44.herokuapp.com/auth/login", user.credentials)
       .then(res => {
         localStorage.setItem("token", res.data.payload);
         push("/item-list");
@@ -59,12 +61,16 @@ export default function Login() {
       .catch(err => {
         console.log(err);
       });
-    postLoggedUser(loggedUser);
   };
+
 
   const onSubmit = e => {
     e.preventDefault();
-    login();
+    const loggedUser = {
+      username: formValues.username.trim(),
+      password: formValues.password.trim()
+    };
+    postLoggedUser(loggedUser);
   };
 
   const onChange = e => {
@@ -95,7 +101,7 @@ export default function Login() {
             value={formValues.email}
             onChange={onChange}
             name="username"
-            type="email"
+            type="text"
           />
         </label>
 
