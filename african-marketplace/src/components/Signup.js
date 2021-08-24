@@ -20,27 +20,26 @@ button{
     background-color:#ccccff;
     }
 
-    button:hover{
+  button:hover{
     background-color: grey;
     color: white;
     }
 
-    .signup{
-        padding:5rem;
-        height:50vh;
-        box-shadow:5px 10px 8px 10px #888888;
-    }
+  .signup{
+    padding:5rem;
+    height:50vh;
+    box-shadow:5px 10px 8px 10px #888888;
+  }
 
-    #signup-btn{
-        margin-top:20%;
-        margin-left:40%;
-        padding:3%;
-    }
+  #signup-btn{
+    padding:3%;
+    margin-top:10%;
+    margin-left:40%;
+  }
 
-
-input, textarea:focus {
-  border: 5px solid #555;
-}
+  input, textarea:focus {
+    border: 5px solid #555;
+  }
 
   input, textarea{
     display: block;
@@ -193,7 +192,7 @@ export default function Signup() {
             />
         </div>
         <button id="signup-btn" disabled={disabled}>
-            SIGN UP
+            Sign Up
           </button>
       </form>
       {/* {users.map((user, index) => {
