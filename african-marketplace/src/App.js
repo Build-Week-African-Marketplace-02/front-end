@@ -18,10 +18,10 @@ function App() {
     //api call to remove token when log out is clicked
     e.preventDefault();
     axiosWithAuth()
-      .post("http://localhost:5000/api/logout")
+      .post("https://african-marketplace-44.herokuapp.com/api/auth/logout")
       .then(res => {
         localStorage.removeItem("token");
-        window.location.href = "http://localhost:3000/api/login";
+        window.location.href = "https://african-marketplace-44.herokuapp.com/api/auth/login";
       });
   };
 
@@ -33,15 +33,15 @@ function App() {
             <Link to="/">Home</Link>
           </a>
           <a>
+            <Link to="/item-list">Items</Link>
+          </a>
+          <a>
             <Link to="/signup">Sign Up</Link>
           </a>
           <a>
             <Link to="/login">Login</Link>
           </a>
           <a onClick={handleLogout}>Logout</a>
-          <a>
-            <Link to="/item-list">Items</Link>
-          </a>
         </nav>
       </div>
 

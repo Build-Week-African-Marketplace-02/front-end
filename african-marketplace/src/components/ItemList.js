@@ -7,9 +7,8 @@ import ItemCreation from "./ItemCreation";
 const ItemList = () => {
   const [items, setItems] = useState([]);
 
-<<<<<<< HEAD
     useEffect(()=>{
-        axios.get('https://african-marketplace-44.herokuapp.com/products')
+        axios.get('https://african-marketplace-44.herokuapp.com/api/products')
           .then(res => {
             setItems(res.data);
           })
@@ -17,18 +16,6 @@ const ItemList = () => {
             console.log(err);
           });
       }, []);
-=======
-  useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/items")
-      .then(res => {
-        setItems(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }, []);
->>>>>>> beb4ff215ad089e8b1fc7c4916ac6f4aeaaca645
 
   return (
     <>

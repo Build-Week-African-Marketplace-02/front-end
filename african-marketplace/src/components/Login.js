@@ -55,8 +55,9 @@ export default function Login() {
       axios
       .post("https://african-marketplace-44.herokuapp.com/api/auth/login", user.credentials)
       .then(res => {
-        localStorage.setItem("token", res.data.payload);
+        localStorage.setItem("token", res.data.token);
         push("/item-list");
+        console.log(res.data)
       })
       .catch(err => {
         console.log(err);
