@@ -53,14 +53,18 @@ export default function Login() {
   // const login = () => {
     const postLoggedUser = loggedUser => {
       axios
-      .post("https://african-marketplace-44.herokuapp.com/auth/login", user.credentials)
+      .post("https://african-marketplace-44.herokuapp.com/api/auth/login", user.credentials)
       .then(res => {
-        localStorage.setItem("token", res.data.payload);
+        localStorage.setItem("token", res.data.token);
         push("/item-list");
+        console.log(res.data)
       })
       .catch(err => {
         console.log(err);
-      });
+      })
+      .finally(() => {
+        setFormValues(initialFormValues)
+      })
   };
 
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import { Link } from "react-router-dom";
 import SignupSchema from "../validation/signupSchema";
+import axios from "axios";
 
 const initialFormValues = {
   name: "",
@@ -53,8 +54,17 @@ export default function Signup() {
   //POST new user
   const postNewUser = newUser => {
     //eventual POST request using axios will go here
-    setUsers([newUser, ...users]);
-    setFormValues(initialFormValues);
+    axios
+      .post("https://african-marketplace-44.herokuapp.com/auth/api/login", newUser)
+      .then(res => {
+        setUsers([newUser, ...users]);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+      .finally(() => {
+        setFormValues(initialFormValues);
+      })
   };
   //Sign up button submit
   const signUpSubmit = () => {
