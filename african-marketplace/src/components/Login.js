@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -43,6 +44,7 @@ export default function Login() {
     postLoggedUser(loggedUser);
   };
 
+
   const onSubmit = e => {
     e.preventDefault();
     postLoggedUser();
@@ -69,6 +71,7 @@ export default function Login() {
             name="username"
             type="email"
           />
+    
         </label>
 
         <label>
@@ -80,7 +83,12 @@ export default function Login() {
             type="password"
           />
         </label>
+
       </div>
+
+
+    
+
 
       <div className="errors">
         <div>{formErrors.email}</div>

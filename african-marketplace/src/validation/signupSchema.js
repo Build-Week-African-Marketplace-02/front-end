@@ -16,7 +16,12 @@ const signupSchema = yup.object().shape({
   email: yup
     .string()
     .trim()
-    .required("Please Enter Your Email")
+    .required("Please Enter Your Email/Username"),
+
+  username: yup 
+    .string()
+    .trim()
+    .required("Please Enter Your Email As Your Username")
 });
 
 export default signupSchema;
