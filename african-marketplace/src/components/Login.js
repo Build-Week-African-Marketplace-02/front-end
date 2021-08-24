@@ -1,6 +1,7 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useHistory } from "react-router";
 
 const initialFormValues = {
   username: "",
@@ -15,9 +16,17 @@ const initialFormErrors = {
 const initialDisabled = true;
 
 export default function Login() {
+  const initialState = {
+    credentials: {
+      username: "",
+      password: ""
+    }
+  };
   //my code starts here
   //state
-  const [loggedUsers, setLoggedUsers] = useState([]);
+  const [user, setUser] = useState(initialState);
+  const { push } = useHistory();
+
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
@@ -30,29 +39,43 @@ export default function Login() {
     });
   };
   //POST new user
-  const postLoggedUser = logged => {
+  const postLoggedUser = loggedUser => {
     //eventual POST request using axios will go here
-    setLoggedUsers([logged, ...loggedUsers]);
+    setUser([loggedUser, ...user]);
     setFormValues(initialFormValues);
   };
   //Sign up button submit
   const login = () => {
     const loggedUser = {
-      username: formValues.email.trim(),
+      username: formValues.username.trim(),
       password: formValues.password.trim()
     };
+    axios
+      .post("http://fakeapi.com", user.credentials)
+      .then(res => {
+        localStorage.setItem("token", res.data.payload);
+        push("/item-list");
+      })
+      .catch(err => {
+        console.log(err);
+      });
     postLoggedUser(loggedUser);
   };
 
-
   const onSubmit = e => {
     e.preventDefault();
-    postLoggedUser();
+    login();
   };
+
   const onChange = e => {
-    //works with checkboxes too if we add any
     const { name, value } = e.target;
     inputChange(name, value);
+    setUser({
+      credentials: {
+        ...user.credentials,
+        [e.target.name]: e.target.value
+      }
+    });
   };
   //my code ends here
 
@@ -60,7 +83,7 @@ export default function Login() {
     <form id="login-container" onSubmit={onSubmit}>
       <h1>Login Component</h1>
       <Link to="/signup">
-        <button className='signup-link'>Sign Up</button>
+        <button className="signup-link">Sign Up</button>
       </Link>
       <div className="form-group login-submit">
         <button id="login-button">Login</button>
@@ -74,7 +97,6 @@ export default function Login() {
             name="username"
             type="email"
           />
-    
         </label>
 
         <label>
@@ -86,12 +108,7 @@ export default function Login() {
             type="password"
           />
         </label>
-
       </div>
-
-
-    
-
 
       <div className="errors">
         <div>{formErrors.email}</div>
