@@ -6,7 +6,7 @@ const ItemList = () => {
     const [items, setItems] = useState([]);
 
     useEffect(()=>{
-        axios.get('http://localhost:5000/api/items')
+        axios.get('https://african-marketplace-44.herokuapp.com/products')
           .then(res => {
             setItems(res.data);
           })

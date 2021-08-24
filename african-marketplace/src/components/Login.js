@@ -44,18 +44,6 @@ export default function Login() {
   //POST new user
 
     //eventual POST request using axios will go here
-<<<<<<< HEAD
-    // setUser([loggedUser, ...user]);
-    setFormValues(initialFormValues);
-  };
-  //Sign up button submit
-  const login = () => {
-    const loggedUser = {
-      username: formValues.username.trim(),
-      password: formValues.password.trim()
-    };
-    axios
-=======
   //   setUser([loggedUser, ...user]);
   //   setFormValues(initialFormValues);
   // };
@@ -65,15 +53,17 @@ export default function Login() {
   // const login = () => {
     const postLoggedUser = loggedUser => {
       axios
->>>>>>> 676f6a1dd35aa15b468276c1b01ee55e46238411
-      .post("https://african-marketplace-44.herokuapp.com/auth/login", user.credentials)
+      .post("https://african-marketplace-44.herokuapp.com/api/auth/login", user.credentials)
       .then(res => {
         localStorage.setItem("token", res.data.payload);
         push("/item-list");
       })
       .catch(err => {
         console.log(err);
-      });
+      })
+      .finally(() => {
+        setFormValues(initialFormValues)
+      })
   };
 
 
