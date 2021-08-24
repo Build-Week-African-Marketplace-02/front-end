@@ -59,6 +59,9 @@ export default function Login() {
   return (
     <form id="login-container" onSubmit={onSubmit}>
       <h1>Login Component</h1>
+      <div className="form-group signup-btn">
+        <button id="signup-button">Sign Up</button>
+      </div>
       <div className="form-group login-submit">
         <button id="login-button">Login</button>
       </div>
