@@ -1,12 +1,15 @@
+
 import React, { useState } from "react";
 import axios from 'axios'
 import { useHistory } from "react-router";
+
 
 export default function Login(props) {
     const {
         values, 
         submit, 
-        change, 
+        change,
+        disabled, 
         errors,
     } = props 
 
@@ -34,6 +37,9 @@ export default function Login(props) {
     }
 
     const onChange = evt => {
+
+        
+
         const { name } = evt.target
         change(name)
         setUser({
@@ -42,11 +48,12 @@ export default function Login(props) {
                 [evt.target.name]: evt.target.value,
             }
         })
+
     }
 
   return (
     <form id="login-container" onSubmit={onSubmit}>
-      <h1>Login Component</h1>
+      <h1>Log In Component</h1>
 
       <div className='form-group login-inputs'>
         <label>Username:
@@ -68,12 +75,16 @@ export default function Login(props) {
         </label>
       </div> 
 
+      <Link to="/signup">
+        <button id="signup-btn">Sign Up</button>
+      </Link>
+
      <div className='form-group login-submit'>
-        <button id='login-button'>Login</button>
+        <button id='login-button' disabled={disabled}>Login</button>
      </div>
 
         <div className='errors'>
-            <div>{errors.email}</div>
+            <div>{errors.username}</div>
             <div>{errors.password}</div>
         </div>
 
