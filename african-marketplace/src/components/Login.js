@@ -3,6 +3,62 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useHistory } from "react-router";
 import { ValidationError } from "yup";
+import styled from 'styled-components'
+
+const StyledLogin = styled.div`
+display:flex;
+justify-content:center;
+align-items:center;
+border:5px solid black;
+height:100vh;
+
+button{
+    display:flex;
+    justify-content:center;
+    border-radius:5px;
+    background-color:#ccccff;
+    }
+
+    
+    button:hover{
+    background-color: grey;
+    color: white;
+    }
+    
+    .loginDiv{
+        padding:5rem;
+        height:50vh;
+        box-shadow:5px 10px 8px 10px #888888;
+    }
+
+    #submit{
+        padding:3%;
+        margin-top:10%;
+        margin-left:40%;
+    }
+
+    #login-button{
+        margin-top:25%;
+    }
+
+    input, textarea:focus {
+      border: 5px solid #555;
+    }
+    
+      input, textarea{
+        display: block;
+        padding: .5rem .8rem .5rem .8rem;
+        margin: 5% 0;
+        border-radius: 5px;
+        font-size: 20px;
+        border: solid grey 2px;
+    
+    }
+    
+      textarea{
+        height: 15vh;
+    }
+`
 
 const initialFormValues = {
   username: "",
@@ -90,40 +146,47 @@ export default function Login() {
   //my code ends here
 
   return (
+    <StyledLogin>
     <form id="login-container" onSubmit={onSubmit}>
-      <h1>Login Component</h1>
-      <Link to="/signup">
+      <div className='loginDiv'>
+      <h1>User Login</h1>
+      {/* <Link to="/signup">
         <button className="signup-link">Sign Up</button>
-      </Link>
-      <div className="form-group login-submit">
+      </Link> */}
+      {/* <div className="form-group login-submit">
         <button id="login-button">Login</button>
-      </div>
+      </div> */}
       <div className="form-group login-inputs">
-        <label>
-          Username:
+        
+ 
           <input
             value={formValues.email}
             onChange={onChange}
             name="username"
             type="text"
+            placeholder='username'
           />
-        </label>
 
-        <label>
-          Password:
+
+
           <input
             value={formValues.password}
             onChange={onChange}
             name="password"
             type="password"
+            placeholder='password'
           />
-        </label>
+
       </div>
 
       <div className="errors">
         <div>{formErrors.email}</div>
         <div>{formErrors.password}</div>
       </div>
+
+      <button id='submit' disabled={disabled}>Login</button>
+      </div>
     </form>
+    </StyledLogin>
   );
 }

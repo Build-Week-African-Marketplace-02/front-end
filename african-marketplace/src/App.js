@@ -52,8 +52,6 @@ function App() {
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
 
-        <Route path="/createitem" component={ItemCreation} />
-
         <Route path="/item/:id">
           <Item />
         </Route>
