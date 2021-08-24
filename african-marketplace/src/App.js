@@ -46,16 +46,12 @@ function App() {
       </div>
 
       <Switch>
-
         <PrivateRoute exact path="/protected" component={ItemCreation} />
         <Route path="/item-list" component={ItemList} />
         <PrivateRoute path="/logout" component={Logout} />
         <Route path="/signup" component={Signup} />
-
         <Route path="/login" component={Login} />
-
-       
-
+        <Route path="/createitem" component={ItemCreation} />
 
         <Route path="/item/:id">
           <Item />
