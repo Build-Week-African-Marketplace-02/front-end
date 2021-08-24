@@ -45,6 +45,7 @@ export default function ItemCreation(props) {
       price: formValues.price.trim(),
       location: formValues.location.trim()
     };
+    setFormValues(initialFormValues);
     postNewItem(newItem);
   };
   const onSubmit = e => {
