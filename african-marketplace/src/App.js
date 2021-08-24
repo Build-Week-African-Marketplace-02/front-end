@@ -102,10 +102,10 @@ function App() {
       <div>
         <nav>
           <a><Link to='/'>Home</Link></a>
+          <a><Link to='/item-list'>Items</Link></a>
           <a><Link to='/signup'>Sign Up</Link></a>
           <a><Link to='/login'>Login</Link></a>
           <a onClick={handleLogout}>Logout</a>
-          <a><Link to='/item-list'>Items</Link></a>
         </nav>
       </div>
 
