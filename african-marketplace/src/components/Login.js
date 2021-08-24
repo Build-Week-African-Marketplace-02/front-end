@@ -148,32 +148,19 @@ export default function Login() {
   //my code ends here
 
   return (
-
     <StyledLogin>
     <form id="login-container" onSubmit={onSubmit}>
       <div className='loginDiv'>
       <h1>User Login</h1>
       {/* <Link to="/signup">
         <button className="signup-link">Sign Up</button>
-      </Link> */}
-      {/* <div className="form-group login-submit">
+      </Link> /}
+      {/ <div className="form-group login-submit">
         <button id="login-button">Login</button>
       </div> */}
       <div className="form-group login-inputs">
-        
- 
 
-    <StyledLogin id="login-container" onSubmit={onSubmit}>
-      <h1>Login Component</h1>
-      <div id='login-button-group'>
-        <Link to="/signup">
-          <button className="signup-link">Sign Up</button>
-        </Link>
-        <div className="form-group login-submit">
-          <button id="login-button">Login</button>
-        </div>
-      </div>
-      <div className="form-group login-inputs">
+ 
           <input
             value={formValues.email}
             onChange={onChange}
@@ -181,6 +168,7 @@ export default function Login() {
             type="text"
             placeholder='username'
           />
+
 
 
           <input
@@ -198,11 +186,9 @@ export default function Login() {
         <div>{formErrors.password}</div>
       </div>
 
-
       <button id='submit' disabled={disabled}>Login</button>
       </div>
     </form>
-
     </StyledLogin>
   );
 }
