@@ -10,7 +10,6 @@ const StyledLogin = styled.div`
 display:flex;
 justify-content:center;
 align-items:center;
-border:5px solid black;
 height:100vh;
 
 button{
