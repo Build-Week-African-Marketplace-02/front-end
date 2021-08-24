@@ -1,4 +1,6 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const initialFormValues = {
   name: "",
@@ -12,6 +14,8 @@ export default function ItemCreation(props) {
   const [formValues, setFormValues] = useState(initialFormValues);
   //state for items
   const [items, setItems] = useState([]);
+
+  const { push } = useHistory()
 
   //name
   //description
@@ -47,6 +51,14 @@ export default function ItemCreation(props) {
     };
     setFormValues(initialFormValues);
     postNewItem(newItem);
+    axios.post('https://african-marketplace-44.herokuapp.com/api/auth/products/create', newItem)
+      .then(res => {
+        props.newItem(res.data)
+        push('/item-list')
+      })
+      .catch(err => {
+        console.log(err)
+    })
   };
   const onSubmit = e => {
     e.preventDefault();
