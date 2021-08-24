@@ -41,7 +41,7 @@ export default function Login() {
   //POST new user
   const postLoggedUser = loggedUser => {
     //eventual POST request using axios will go here
-    setUser([loggedUser, ...user]);
+    // setUser([loggedUser, ...user]);
     setFormValues(initialFormValues);
   };
   //Sign up button submit
@@ -51,7 +51,7 @@ export default function Login() {
       password: formValues.password.trim()
     };
     axios
-      .post("http://fakeapi.com", user.credentials)
+      .post("https://african-marketplace-44.herokuapp.com/auth/login", user.credentials)
       .then(res => {
         localStorage.setItem("token", res.data.payload);
         push("/item-list");
@@ -95,7 +95,7 @@ export default function Login() {
             value={formValues.email}
             onChange={onChange}
             name="username"
-            type="email"
+            type="text"
           />
         </label>
 
