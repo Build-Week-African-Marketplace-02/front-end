@@ -3,6 +3,30 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useHistory } from "react-router";
 import { ValidationError } from "yup";
+import styled from 'styled-components';
+
+const StyledLogin = styled.form`
+
+.login-inputs {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #login-button-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;    
+  }
+
+  .signup-link {
+    margin-right: 5px;
+  }
+
+  label {
+    margin-top: 2.5%;
+  }
+
+`
 
 const initialFormValues = {
   username: "",
@@ -90,17 +114,19 @@ export default function Login() {
   //my code ends here
 
   return (
-    <form id="login-container" onSubmit={onSubmit}>
+    <StyledLogin id="login-container" onSubmit={onSubmit}>
       <h1>Login Component</h1>
-      <Link to="/signup">
-        <button className="signup-link">Sign Up</button>
-      </Link>
-      <div className="form-group login-submit">
-        <button id="login-button">Login</button>
+      <div id='login-button-group'>
+        <Link to="/signup">
+          <button className="signup-link">Sign Up</button>
+        </Link>
+        <div className="form-group login-submit">
+          <button id="login-button">Login</button>
+        </div>
       </div>
       <div className="form-group login-inputs">
         <label>
-          Username:
+          Username:&nbsp;
           <input
             value={formValues.email}
             onChange={onChange}
@@ -110,7 +136,7 @@ export default function Login() {
         </label>
 
         <label>
-          Password:
+          Password:&nbsp;
           <input
             value={formValues.password}
             onChange={onChange}
@@ -124,6 +150,6 @@ export default function Login() {
         <div>{formErrors.email}</div>
         <div>{formErrors.password}</div>
       </div>
-    </form>
+    </StyledLogin>
   );
 }
