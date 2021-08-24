@@ -1,5 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
+
+import React, { useState } from "react";
+import axios from 'axios'
+import { useHistory } from "react-router";
+
 
 export default function Login(props) {
     const {
@@ -10,15 +13,42 @@ export default function Login(props) {
         errors,
     } = props 
 
+    const initialState = { // initial state for authorization
+        credentials: {
+            username: '',
+            password: '',
+        }
+    }
+
+    const [user, setUser] = useState(initialState)
+    const { push } = useHistory()
+
     const onSubmit = evt => {
         evt.preventDefault()
         submit()
+        axios.post('http://fakeapi.com', user.credentials)
+            .then(res=> {
+                localStorage.setItem("token", res.data.payload)
+                push('/item-list')
+            })
+            .catch(err=> {
+                console.log(err)
+            })
     }
 
     const onChange = evt => {
-        const { name, value, checked, type } = evt.target
-        const valueToUse = type === 'checkbox' ? checked : value;
-        change(name, valueToUse)
+
+        
+
+        const { name } = evt.target
+        change(name)
+        setUser({
+            credentials: {
+                ...user.credentials,
+                [evt.target.name]: evt.target.value,
+            }
+        })
+
     }
 
   return (
