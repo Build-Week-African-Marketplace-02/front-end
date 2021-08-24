@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Switch, Link } from "react-router-dom";
 import "./App.css";
+import { useHistory } from "react-router";
 
-import axiosWithAuth from "./components/axiosWithAuth";
+import styled from "styled-components";
 
 import Home from "./components/Home";
 import Signup from "./components/Signup";
@@ -13,19 +14,35 @@ import ItemCreation from "./components/ItemCreation";
 import ItemList from "./components/ItemList";
 import Item from "./components/Item";
 
+const StyledApp = styled.div`
+  margin: 1rem 3rem;
+
+  a{
+    text-decoration: none;
+    padding: 1rem 1rem;
+    color: black;
+  }
+
+  nav{
+    display:flex;
+    justify-content: flex-end;
+    flex-direction: row;
+  }
+
+`
+
 function App() {
+  const [items, setItems] = useState([])
+  const { push } = useHistory();
+
   const handleLogout = e => {
-    //api call to remove token when log out is clicked
     e.preventDefault();
-    axiosWithAuth()
-      .post("https://african-marketplace-44.herokuapp.com/api/auth/logout")
-      .then(res => {
-        localStorage.removeItem("token");
-        window.location.href = "https://african-marketplace-44.herokuapp.com/api/auth/login";
-      });
+    localStorage.removeItem("token");
+    push('/')
   };
 
   return (
+    <StyledApp>
     <div className="App">
       <div>
         <nav>
@@ -41,13 +58,13 @@ function App() {
           <a>
             <Link to="/login">Login</Link>
           </a>
-          <a onClick={handleLogout}>Logout</a>
+          <a href='#' onClick={handleLogout}>Logout</a>
         </nav>
       </div>
 
       <Switch>
         <PrivateRoute exact path="/protected" component={ItemCreation} />
-        <Route path="/item-list" component={ItemList} />
+        <Route path="/item-list" render={props=> <ItemList {...props} items={items}/>} />
         <PrivateRoute path="/logout" component={Logout} />
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
@@ -62,6 +79,7 @@ function App() {
 
       </Switch>
     </div>
+    </StyledApp>
   );
 }
 

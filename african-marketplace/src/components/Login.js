@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useHistory } from "react-router";
 import { ValidationError } from "yup";
+
 import styled from 'styled-components'
 
 const StyledLogin = styled.div`
@@ -58,6 +59,7 @@ button{
       textarea{
         height: 15vh;
     }
+
 `
 
 const initialFormValues = {
@@ -146,6 +148,7 @@ export default function Login() {
   //my code ends here
 
   return (
+
     <StyledLogin>
     <form id="login-container" onSubmit={onSubmit}>
       <div className='loginDiv'>
@@ -159,6 +162,18 @@ export default function Login() {
       <div className="form-group login-inputs">
         
  
+
+    <StyledLogin id="login-container" onSubmit={onSubmit}>
+      <h1>Login Component</h1>
+      <div id='login-button-group'>
+        <Link to="/signup">
+          <button className="signup-link">Sign Up</button>
+        </Link>
+        <div className="form-group login-submit">
+          <button id="login-button">Login</button>
+        </div>
+      </div>
+      <div className="form-group login-inputs">
           <input
             value={formValues.email}
             onChange={onChange}
@@ -166,7 +181,6 @@ export default function Login() {
             type="text"
             placeholder='username'
           />
-
 
 
           <input
@@ -184,9 +198,11 @@ export default function Login() {
         <div>{formErrors.password}</div>
       </div>
 
+
       <button id='submit' disabled={disabled}>Login</button>
       </div>
     </form>
+
     </StyledLogin>
   );
 }
