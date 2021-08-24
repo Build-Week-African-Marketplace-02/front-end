@@ -51,6 +51,7 @@ function App() {
         <PrivateRoute path="/logout" component={Logout} />
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
+
         <Route path="/createitem" component={ItemCreation} />
 
         <Route path="/item/:id">
@@ -60,6 +61,7 @@ function App() {
         <Route path="/">
           <Home />
         </Route>
+
       </Switch>
     </div>
   );
