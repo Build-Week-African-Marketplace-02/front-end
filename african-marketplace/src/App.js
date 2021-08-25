@@ -46,6 +46,7 @@ function App() {
     <div className="App">
       <div>
         <nav>
+        <img src ="https://drive.google.com/thumbnail?id=1AN7Ds-qt464BCXEh6ux_gso6BWkAIPJ6" className="logo"></img>
           <a>
             <Link to="/">Home</Link>
           </a>
