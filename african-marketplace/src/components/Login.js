@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import axios from "axios";
 import { useHistory } from "react-router";
-import { ValidationError } from "yup";
+// import { ValidationError } from "yup";
 
 import styled from 'styled-components'
 
@@ -10,7 +10,7 @@ const StyledLogin = styled.div`
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
+height:80vh;
 
 button{
     display:flex;
