@@ -2,6 +2,74 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
+import styled from "styled-components";
+
+const StyledItemCreation = styled.div`
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+
+button{
+  display:flex;
+  justify-content:center;
+  border-radius:25px;
+  font-family: "Arial Black", Gadget, sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.5s;
+  width:35%;
+  background-size: 200% auto;
+  color: #FFF;
+  box-shadow: 0 0 20px #eee;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+  
+button:hover{
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  margin: 8px 10px 12px;
+  background-position: right center;
+}
+
+#item-submit {
+  padding:3%;
+  margin-top:15%;
+  margin-left:32.5%;
+  background-image: linear-gradient(to right, #2BC0E4 0%, #EAECC6 51%, #2BC0E4 100%)
+}
+
+#itemform-div {
+  padding:5rem;
+  height:50vh;
+  box-shadow:5px 10px 8px 10px #888888;
+}
+
+#form-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input, textarea:focus {
+  border: 5px solid #555;
+}
+  
+input, textarea{
+  display: block;
+  padding: .5rem .8rem .5rem .8rem;
+  margin: 5% 0;
+  border-radius: 5px;
+  font-size: 20px;
+  border: solid grey 2px;
+}
+  
+textarea{
+  height: 15vh;
+}
+`
+
 const initialFormValues = {
   name: "",
   description: "",
@@ -66,10 +134,11 @@ export default function ItemCreation(props) {
   };
 
   return (
-    <div>
+    <StyledItemCreation>
       <form id="item-form" onSubmit={onSubmit}>
+        <div id='itemform-div'>
         <h2>Add an Item</h2>
-        <div className="form-group inputs">
+        <div id="form-inputs">
           <div id="item-name">
             <label>
               Name:
@@ -138,15 +207,17 @@ export default function ItemCreation(props) {
               </select>
             </label>
           </div>
+          </div>
           <div className="form-group submit">
             <button id="item-submit">Add Item</button>
           </div>
         </div>
+        
       </form>
       {items.map((item, index) => {
         return <Item key={index} details={item} />;
       })}
-    </div>
+    </StyledItemCreation>
   );
 }
 
