@@ -25,8 +25,11 @@ const StyledApp = styled.div`
 
   nav{
     display:flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     flex-direction: row;
+    align-items: center;
+    height: 5.5rem;
+    padding-bottom: 1.5rem;
   }
 
 `

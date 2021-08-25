@@ -37,7 +37,7 @@ button:hover{
   padding:3%;
   margin-top:15%;
   margin-left:32.5%;
-  background-image: linear-gradient(to right, #2BC0E4 0%, #EAECC6 51%, #2BC0E4 100%)
+  background-image: linear-gradient(to right, #DD5E89 0%, #F7BB97 51%, #DD5E89 100%)
 }
 
 #itemform-div {
@@ -137,43 +137,40 @@ export default function ItemCreation(props) {
     <StyledItemCreation>
       <form id="item-form" onSubmit={onSubmit}>
         <div id='itemform-div'>
-        <h2>Add an Item</h2>
+        <h2>Add Item</h2>
         <div id="form-inputs">
           <div id="item-name">
-            <label>
-              Name:
+       
               <input
                 value={formValues.name}
                 onChange={onChange}
                 name="name"
                 type="text"
+                placeholder='Title'
               />
-            </label>
           </div>
           <div id="item-description">
-            <label>
-              Description:
+
               <input
                 value={formValues.description}
                 onChange={onChange}
                 name="description"
                 type="text"
+                placeholder='Description'
               />
-            </label>
           </div>
           <div id="item-price">
-            <label>
-              Price:
+      
               <input
                 value={formValues.price}
                 onChange={onChange}
                 name="price"
                 type="text"
+                placeholder='Price'
               />
-            </label>
           </div>
           <div id="market-location">
-            <label>
+       
               Market Location:
               <select
                 onChange={onChange}
@@ -205,7 +202,6 @@ export default function ItemCreation(props) {
                 <option value="oloitoktok">Oloitoktok</option>
                 <option value="wajir">Wajir</option>
               </select>
-            </label>
           </div>
           </div>
           <div className="form-group submit">

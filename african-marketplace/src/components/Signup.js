@@ -14,15 +14,25 @@ align-items:center;
 height:100vh;
 
 button{
-    display:flex;
-    justify-content:center;
-    border-radius:5px;
-    background-color:#ccccff;
+  display:flex;
+  justify-content:center;
+  border-radius:25px;
+  font-family: "Arial Black", Gadget, sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.5s;
+  width:35%;
+  background-size: 200% auto;
+  color: #FFF;
+  box-shadow: 0 0 20px #eee;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     }
 
   button:hover{
-    background-color: grey;
-    color: white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+      margin: 8px 10px 12px;
+      background-position: right center;
     }
 
   .signup{
@@ -33,8 +43,9 @@ button{
 
   #signup-btn{
     padding:3%;
-    margin-top:10%;
-    margin-left:40%;
+      margin-top:15%;
+      margin-left:32.5%;
+      background-image: linear-gradient(to right, #2BC0E4 0%, #EAECC6 51%, #2BC0E4 100%)
   }
 
   input, textarea:focus {
@@ -165,7 +176,6 @@ export default function Signup() {
           </div>
         </div>
         <div className="form-group inputs">
-          <h4>User Information:</h4>
             <input
               id="name-signup"
               type="text"
@@ -182,16 +192,8 @@ export default function Signup() {
               name="password"
               placeholder='password'
             />
-            <input
-              id="email-signup"
-              type="email"
-              value={formValues.email}
-              onChange={onChange}
-              name="email"
-              placeholder='email'
-            />
         </div>
-        <button id="signup-btn" disabled={disabled}>
+        <button id="signup-btn">
             Sign Up
           </button>
       </form>
