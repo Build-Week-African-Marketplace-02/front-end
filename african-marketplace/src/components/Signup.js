@@ -68,15 +68,13 @@ button{
 `
 
 const initialFormValues = {
-  name: "",
+  username: "",
   password: "",
-  email: ""
 };
 //initial error state
 const initialFormErrors = {
-  name: "",
+  username: "",
   password: "",
-  email: ""
 };
 
 const initialUsers = [];
@@ -134,9 +132,8 @@ export default function Signup() {
   //Sign up button submit
   const signUpSubmit = () => {
     const newUser = {
-      name: formValues.name.trim(),
+      username: formValues.username.trim(),
       password: formValues.password.trim(),
-      email: formValues.email.trim()
     };
     postNewUser(newUser);
   };
@@ -170,18 +167,17 @@ export default function Signup() {
       <form id="signup-form" onSubmit={onSubmit}>
         <div className="form-group submit">
           <div className="errors">
-            <div>{formErrors.name}</div>
+            <div>{formErrors.username}</div>
             <div>{formErrors.password}</div>
-            <div>{formErrors.email}</div>
           </div>
         </div>
         <div className="form-group inputs">
             <input
               id="name-signup"
               type="text"
-              value={formValues.name}
+              value={formValues.username}
               onChange={onChange}
-              name="name"
+              name="username"
               placeholder='username'
             />
             <input
@@ -211,9 +207,8 @@ const User = ({ details }) => {
   }
   return (
     <div className="user container">
-      <h2>Name: {details.name}</h2>
+      <h2>username: {details.username}</h2>
       <p>Password: {details.password}</p>
-      <p>Email: {details.email}</p>
     </div>
   );
 };
