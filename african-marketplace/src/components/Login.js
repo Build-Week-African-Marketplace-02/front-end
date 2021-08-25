@@ -39,7 +39,7 @@ button{
       padding:3%;
       margin-top:15%;
       margin-left:32.5%;
-      background-image: linear-gradient(to right, #2BC0E4 0%, #EAECC6 51%, #2BC0E4 100%)
+      background-image: linear-gradient(to right, #7474BF 0%, #348AC7 51%, #7474BF 100%)
   }
     
     .loginDiv{
