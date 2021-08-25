@@ -3,6 +3,7 @@ import * as yup from "yup";
 // import { Link } from "react-router-dom";
 import SignupSchema from "../validation/signupSchema";
 import axios from "axios";
+import { useHistory } from "react-router";
 
 import styled from "styled-components";
 
@@ -86,6 +87,8 @@ export default function Signup() {
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
 
+  const { push } = useHistory();
+
   //validate the data coming into the input feilds
   const validate = (name, value) => {
     yup
@@ -120,6 +123,7 @@ export default function Signup() {
       .post("https://african-marketplace-44.herokuapp.com/api/auth/register", newUser)
         .then(res => {
           setUsers([res.data, ...users]);
+          push('/login')
         })
         .catch(err => {
           console.log(err);

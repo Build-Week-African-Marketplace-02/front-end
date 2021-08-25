@@ -70,163 +70,80 @@ textarea{
 }
 `
 
-const initialFormValues = {
-  name: "",
-  description: "",
-  price: "",
-  location: ""
-};
 export default function ItemCreation(props) {
-  const { itemList } = props;
-  //state for forms
-  const [formValues, setFormValues] = useState(initialFormValues);
-  //state for items
-  const [items, setItems] = useState([]);
-
+ 
   const { push } = useHistory()
 
-  //name
-  //description
-  //price
-  //DROPDOWN for the location
-  //submit button
+  const [item, setItem] = useState({
+    item_name: '',
+    item_description: '',
+    item_price: '',
+    item_country: '',
+    item_seller: '',
+  })
 
-  //function to post a new item to the item list
-  const postNewItem = newItem => {
-    //eventual POST request using axios will go here
-    setItems([newItem, ...items]);
-    setFormValues(initialFormValues);
-  };
-
-  //function to detect change in the inputs
-  const inputChange = (name, value) => {
-    setFormValues({
-      ...formValues,
-      [name]: value
-    });
-  };
-  const onChange = e => {
-    const { name, value } = e.target;
-    inputChange(name, value);
-  };
-
-  const itemSubmit = () => {
-    const newItem = {
-      name: formValues.name.trim(),
-      description: formValues.description.trim(),
-      price: formValues.price.trim(),
-      location: formValues.location.trim()
-    };
-    setFormValues(initialFormValues);
-    postNewItem(newItem);
-    axios.post('https://african-marketplace-44.herokuapp.com/api/auth/products/create', newItem)
-      .then(res => {
-        props.newItem(res.data)
-        push('/item-list')
-      })
-      .catch(err => {
-        console.log(err)
+  const handleChange = e => {
+    setItem({
+        ...item,
+        [e.target.name]: e.target.value
     })
-  };
-  const onSubmit = e => {
+  }
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    itemSubmit();
-  };
+        push('/item-list')
+        const newItem = {
+            id: Date.now(),
+            item_name: item.item_name,
+            item_description: item.item_description,
+            item_price: item.item_price,
+            item_country: item.item_country,
+            item_seller: item.item_seller,
+        }
+
+        axios.post(`https://african-marketplace-44.herokuapp.com/api/items/`, newItem)
+            .then(res => {
+                props.newItem(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+  }
 
   return (
     <StyledItemCreation>
-      <form id="item-form" onSubmit={onSubmit}>
-        <div id='itemform-div'>
-        <h2>Add Item</h2>
-        <div id="form-inputs">
-          <div id="item-name">
-       
-              <input
-                value={formValues.name}
-                onChange={onChange}
-                name="name"
-                type="text"
-                placeholder='Title'
-              />
-          </div>
-          <div id="item-description">
 
-              <input
-                value={formValues.description}
-                onChange={onChange}
-                name="description"
-                type="text"
-                placeholder='Description'
-              />
-          </div>
-          <div id="item-price">
-      
-              <input
-                value={formValues.price}
-                onChange={onChange}
-                name="price"
-                type="text"
-                placeholder='Price'
-              />
-          </div>
-          <div id="market-location">
-       
-              Market Location:
-              <select
-                onChange={onChange}
-                value={formValues.location}
-                name="location"
-              >
-                <option value="">-- Select Market Location</option>
-                <option value="bungoma">Bungoma</option>
-                <option value="busia">Busia</option>
-                <option value="eldoret">Eldoret</option>
-                <option value="embu">Embu</option>
-                <option value="garisa">Garisa</option>
-                <option value="garissa">Garissa</option>
-                <option value="isiolo">Isiolo</option>
-                <option value="kajiado">Kajiado</option>
-                <option value="kakamega">Kakamega</option>
-                <option value="kisii">Kisii</option>
-                <option value="kisumu">Kisumu</option>
-                <option value="kitale">Kitale</option>
-                <option value="kitui">Kitui</option>
-                <option value="loitoktok">Loitoktok</option>
-                <option value="machakos">Machakos</option>
-                <option value="makueni">Makueni</option>
-                <option value="malindi">Malindi</option>
-                <option value="meru">Meru</option>
-                <option value="mombasa">Mombasa</option>
-                <option value="nairobi">Nairobi</option>
-                <option value="nakuru">Nakuru</option>
-                <option value="oloitoktok">Oloitoktok</option>
-                <option value="wajir">Wajir</option>
-              </select>
-          </div>
-          </div>
+      <div>
+      <form onSubmit={handleSubmit}>
+        <h2>Add an item</h2>
+					<div className="form-group">
+						<input value={item.item_name} onChange={handleChange} name="item_name" type="text" placeholder='item name'/>
+					</div>
+					<div className="form-group">
+						<input value={item.item_description} onChange={handleChange} name="item_description" type="text" placeholder='description'/>
+					</div>
+					<div className="form-group">
+						<input value={item.item_price} onChange={handleChange} name="item_price" type="text" placeholder='price'/>
+					</div>
+          <div className="form-group">
+						<input value={item.item_seller} onChange={handleChange} name="item_seller" type="text" placeholder='seller name'/>
+					</div>
+					<div className="form-group">
+						<select value={item.item_country} onChange={handleChange} name="item_country" type="text" placeholder='country'>
+            <option value="">-- Select Market Location</option>
+            <option value="KEN">KEN</option>
+            <option value="SSD">SSD</option>
+            <option value="UGA">UGA</option>
+            <option value="DRC">DRC</option>
+            <option value="TZA">TZA</option>
+            <option value="RWA">RWA</option>
+            </select>
+					</div>		
           <div className="form-group submit">
             <button id="item-submit">Add Item</button>
           </div>
-        </div>
-        
-      </form>
-      {items.map((item, index) => {
-        return <Item key={index} details={item} />;
-      })}
+			</form>
+      </div>
     </StyledItemCreation>
   );
 }
-
-const Item = ({ details }) => {
-  if (!details) {
-    return <h3>Working fetching your item details...</h3>;
-  }
-  return (
-    <div className="item container">
-      <h2>Name: {details.name}</h2>
-      <p>Description: {details.description}</p>
-      <p>Price: {details.price}</p>
-      <p>Location: {details.location}</p>
-    </div>
-  );
-};
