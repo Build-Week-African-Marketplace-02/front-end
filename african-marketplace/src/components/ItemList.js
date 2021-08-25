@@ -1,50 +1,48 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 
-export default class ItemList extends React.Component {
+const ItemList = () => {
 
-constructor() {
-  super();
-  this.state = {
-    items: []
-  }
-}
+  const [items, setItems] = useState([])
+  const { push } = useHistory();
 
-  componentDidMount() {
-    axios.get('https://african-marketplace-44.herokuapp.com/api/items')
-      .then(res => {
-        this.setState({
-          items: res.data,
+  useEffect(() => {
+    const getItems = () => {
+      axios.get('https://african-marketplace-44.herokuapp.com/api/items')
+        .then(res => {
+          setItems(res.data)
+          console.log(res.data)
         })
-      })
-      .catch(err => console.log(err));
+        .catch(err => {
+          console.log(err)
+        })
+    }
+      getItems()
+  }, [])
+
+  const handleClick = (e, item) => {
+    e.preventDefault()
+    push(`/item-list/${item.id}`)
   }
 
-  render() {
-    return (
-      <div className="item-list">
-        <Link to="/protected">
-        <button>Create Item</button>
-      </Link>
-        {this.state.items.map((item) => (
-          <div className="item-card" key={item.itemSeller}>
-            <img className="item-image" src={item.img}/>
-           
-            <div className="item-details">
-              <h2 className="item-name">{item.itemName}</h2>
-              <p className="item-location">{item.itemCountry}</p>
-              <p>{item.itemDescription}</p>
-              <div className="item-bottom-row">
-                <p>${item.itemPrice}</p>
-              </div>
-              <button>
-                Buy
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
-    );
-  }
+  return (
+    <div>
+      {items.map(item => (
+        <div onClick={e => handleClick(e, item)} key={item.id}>
+          <h2>name: {item.item_name}</h2>
+          <p>description: {item.item_description}</p>
+          <p>price: {item.item_price}</p>
+          <p>country: {item.item_country}</p>
+          <p>seller: {item.item_seller}</p>
+        </div>
+      ))}
+      <Link to="/protected">
+         <button>Create Item</button>
+       </Link>
+    </div>
+  )
 }
+
+export default ItemList
