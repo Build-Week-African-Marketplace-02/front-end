@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import SignupSchema from "../validation/signupSchema";
 import axios from "axios";
 
@@ -11,7 +11,7 @@ const StyledSignup = styled.div`
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
+height:80vh;
 
 button{
     display:flex;

@@ -21,12 +21,20 @@ const StyledApp = styled.div`
     text-decoration: none;
     padding: 1rem 1rem;
     color: black;
+    height: 2rem;
   }
 
   nav{
     display:flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     flex-direction: row;
+    align-items: center;
+    height: 5.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  img{
+    
   }
 
 `
@@ -47,6 +55,7 @@ function App() {
       <div>
         <nav>
         <img src ="https://drive.google.com/thumbnail?id=1AN7Ds-qt464BCXEh6ux_gso6BWkAIPJ6" className="logo"></img>
+        <div id='nav-links'>
           <a>
             <Link to="/">Home</Link>
           </a>
@@ -60,6 +69,7 @@ function App() {
             <Link to="/login">Login</Link>
           </a>
           <a href='#' onClick={handleLogout}>Logout</a>
+          </div>
         </nav>
       </div>
 
