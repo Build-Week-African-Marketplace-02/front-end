@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Item from "./Item";
-import ItemCreation from "./ItemCreation";
+// import ItemCreation from "./ItemCreation";
 
 const ItemList = () => {
   const [items, setItems] = useState([]);
