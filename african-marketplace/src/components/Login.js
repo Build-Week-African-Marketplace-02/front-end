@@ -192,7 +192,7 @@ export default function Login() {
         <div>{formErrors.password}</div>
       </div>
 
-      <button id='submit' disabled={disabled}>Login</button>
+      <button id='submit'>Login</button>
       </div>
     </form>
     </StyledLogin>
