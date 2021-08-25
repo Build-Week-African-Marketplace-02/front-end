@@ -1,45 +1,50 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from "react";
 import axios from "axios";
-import Item from "./Item";
-// import ItemCreation from "./ItemCreation";
+import { Link } from "react-router-dom";
 
-const ItemList = () => {
-  const [items, setItems] = useState([]);
+export default class ItemList extends React.Component {
 
-    useEffect(()=>{
-        axios.get('https://african-marketplace-44.herokuapp.com/api/products')
-          .then(res => {
-            setItems(res.data);
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      }, []);
+constructor() {
+  super();
+  this.state = {
+    items: []
+  }
+}
 
-  return (
-    <>
-      <Link to="/createitem">
+  componentDidMount() {
+    axios.get('https://african-marketplace-44.herokuapp.com/api/items')
+      .then(res => {
+        this.setState({
+          items: res.data,
+        })
+      })
+      .catch(err => console.log(err));
+  }
+
+  render() {
+    return (
+      <div className="item-list">
+        <Link to="/protected">
         <button>Create Item</button>
       </Link>
-      <table>
-        <thread>
-          <tr>
-            <th>name</th>
-            <th>descripton</th>
-            <th>location</th>
-            <th>seller</th>
-            <th>price</th>
-          </tr>
-        </thread>
-        <tbody>
-          {items.map(item => (
-            <Item key={item.id} item={item} />
-          ))}
-        </tbody>
-      </table>
-    </>
-  );
-};
-
-export default ItemList;
+        {this.state.items.map((item) => (
+          <div className="item-card" key={item.itemSeller}>
+            <img className="item-image" src={item.img}/>
+           
+            <div className="item-details">
+              <h2 className="item-name">{item.itemName}</h2>
+              <p className="item-location">{item.itemCountry}</p>
+              <p>{item.itemDescription}</p>
+              <div className="item-bottom-row">
+                <p>${item.itemPrice}</p>
+              </div>
+              <button>
+                Buy
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+}

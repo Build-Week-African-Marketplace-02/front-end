@@ -12,7 +12,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Logout from "./components/Logout";
 import ItemCreation from "./components/ItemCreation";
 import ItemList from "./components/ItemList";
-import Item from "./components/Item";
+
 
 const StyledApp = styled.div`
   margin: 1rem 3rem;
@@ -70,14 +70,10 @@ function App() {
 
       <Switch>
         <PrivateRoute exact path="/protected" component={ItemCreation} />
-        <Route path="/item-list" render={props=> <ItemList {...props} items={items}/>} />
+        <Route path="/item-list" render={() => <ItemList />}/>
         <PrivateRoute path="/logout" component={Logout} />
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
-        <Route path="/createitem" component={ItemCreation} />
-        <Route path="/item/:id">
-          <Item />
-        </Route>
 
         <Route path="/">
           <Home />
