@@ -115,9 +115,9 @@ const ItemList = () => {
         <div className='item' onClick={e => handleClick(e, item)} key={item.id}>
           <h3>{item.item_name}</h3>
           <p>Description: {item.item_description}</p>
-          <p>Price: {item.item_price}</p>
+          <p>Price: ${item.item_price}</p>
           <p>Country: {item.item_country}</p>
-          <p>Seller: {item.item_seller}</p>
+          <p>Seller: {item.username}</p>
         </div>
       ))}
       </div>
