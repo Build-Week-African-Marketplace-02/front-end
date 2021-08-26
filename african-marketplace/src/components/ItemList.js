@@ -31,11 +31,11 @@ const ItemList = () => {
     <div>
       {items.map(item => (
         <div onClick={e => handleClick(e, item)} key={item.id}>
-          <h2>name: {item.item_name}</h2>
-          <p>description: {item.item_description}</p>
-          <p>price: {item.item_price}</p>
-          <p>country: {item.item_country}</p>
-          <p>seller: {item.item_seller}</p>
+          <h2>Item: {item.item_name}</h2>
+          <p>Description: {item.item_description}</p>
+          <p>Price: ${item.item_price}</p>
+          <p>Country: {item.item_country}</p>
+          <p>Seller: {item.username}</p>
         </div>
       ))}
       <Link to="/protected">
