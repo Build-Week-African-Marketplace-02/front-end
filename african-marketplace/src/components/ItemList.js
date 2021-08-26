@@ -87,6 +87,7 @@ const ItemList = () => {
         .then(res => {
           setItems(res.data)
           console.log(res.data)
+          // window.location.reload()
         })
         .catch(err => {
           console.log(err)
