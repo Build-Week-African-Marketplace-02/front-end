@@ -5,7 +5,7 @@ import { useHistory } from "react-router";
 import styled from 'styled-components';
 
 const StyledItemList= styled.div`
-height: 100vh;
+height: 100%;
 padding: .2rem 1rem;
 box-shadow:5px 10px 8px 10px #888888;
 
@@ -38,14 +38,14 @@ header p {
 
 button{
   padding: 5px;
-  margin-top: 10px;
+  margin: 20px 0;
   border-radius:5px;
   background-color:#f4c5be;
   color: #6ba393;
   font-size: 1em;
   }
 
-  button:hover{
+button:hover {
   background-color: #6ba393;
   color: #f4c5be;
   }
@@ -66,7 +66,7 @@ button{
   background-color: #f4c5be;
   height: 40%;
   padding: 0 10px;
-  margin: 0 5px;
+  margin: 10px 5px;
 }
 
 .item h3 {
