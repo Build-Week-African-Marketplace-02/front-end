@@ -118,36 +118,68 @@ export default function ItemCreation(props) {
 
   return (
     <StyledItemCreation>
-
       <div id='form-container'>
       <form onSubmit={handleSubmit}>
-        <h2>Add Item</h2>
+        <h2>Add an item</h2>
+
 					<div className="form-group">
-						<input value={item.item_name} onChange={handleChange} name="item_name" type="text" placeholder='item name'/>
+						<input 
+              value={item.item_name} 
+              onChange={handleChange} 
+              name="item_name" 
+              type="text" 
+              placeholder='item name'/>
 					</div>
+
 					<div className="form-group">
-						<input value={item.item_description} onChange={handleChange} name="item_description" type="text" placeholder='description'/>
+						<input 
+              value={item.item_description} 
+              onChange={handleChange} 
+              name="item_description" 
+              type="text" 
+              placeholder='description'/>
 					</div>
+
 					<div className="form-group">
-						<input value={item.item_price} onChange={handleChange} name="item_price" type="text" placeholder='price'/>
+						<input 
+              value={item.item_price} 
+              onChange={handleChange} 
+              name="item_price" 
+              type="text" 
+              placeholder='price'/>
 					</div>
+
           <div className="form-group">
-						<input value={item.username} onChange={handleChange} name="username" type="text" placeholder='seller name'/>
+						<input 
+              value={item.username} 
+              onChange={handleChange} 
+              name="username" 
+              type="text" 
+              placeholder='seller name'/>
 					</div>
+
 					<div className="form-group">
-						<select value={item.item_country} onChange={handleChange} name="item_country" type="text" placeholder='country'>
-            <option value="">--Select Market Location--</option>
-            <option value="KEN">KEN</option>
-            <option value="SSD">SSD</option>
-            <option value="UGA">UGA</option>
-            <option value="DRC">DRC</option>
-            <option value="TZA">TZA</option>
-            <option value="RWA">RWA</option>
+						<select 
+              value={item.item_country} 
+              onChange={handleChange} 
+              name="item_country" 
+              type="text" 
+              placeholder='country'>
+
+              <option value="">--Select Market Location--</option>
+              <option value="KEN">KEN</option>
+              <option value="SSD">SSD</option>
+              <option value="UGA">UGA</option>
+              <option value="DRC">DRC</option>
+              <option value="TZA">TZA</option>
+              <option value="RWA">RWA</option>
             </select>
 					</div>		
+
           <div className="form-group submit">
             <button id="item-submit">Add Item</button>
           </div>
+
 			</form>
       </div>
     </StyledItemCreation>
