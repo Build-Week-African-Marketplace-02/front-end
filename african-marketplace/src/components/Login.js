@@ -166,7 +166,6 @@ export default function Login() {
       </div> */}
       <div className="form-group login-inputs">
 
- 
           <input
             value={formValues.email}
             onChange={onChange}
@@ -174,8 +173,6 @@ export default function Login() {
             type="text"
             placeholder='username'
           />
-
-
 
           <input
             value={formValues.password}
