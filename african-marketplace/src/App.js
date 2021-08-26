@@ -44,15 +44,19 @@ function App() {
     push('/')
   };
 
+  const onClickLogo = (e) => {
+    push('/')
+  }
+
   return (
     <StyledApp>
     <div className="App">
       <div>
         <nav>
-        <img src ="https://drive.google.com/thumbnail?id=1AN7Ds-qt464BCXEh6ux_gso6BWkAIPJ6" className="logo"></img>
+        <img src ="https://drive.google.com/thumbnail?id=1AN7Ds-qt464BCXEh6ux_gso6BWkAIPJ6" className="logo" onClick={onClickLogo}></img>
         <div id='nav-links'>
           <a>
-            <Link to="/">Home</Link>
+            {localStorage.getItem('token') && <Link to='protected'>Post Item</Link>} {/*nav only appears when logged in and you have to manually refresh for it to show up*/}
           </a>
           <a>
             <Link to="/item-list">Items</Link>

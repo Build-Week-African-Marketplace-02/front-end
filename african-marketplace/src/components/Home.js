@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
@@ -94,6 +94,7 @@ const StyledHome = styled.div `
 `
 
 export default function Home() {
+
   return (
     <StyledHome className="home">
       <header>
