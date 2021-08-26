@@ -2,10 +2,11 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
+
 const StyledHome = styled.div `
   height: 100vh;
   padding: .5rem 1rem;
-  box-shadow:5px 10px 8px 10px #888888;
+  background-color:#eeeeee;
 
   header {
     background-image:url('https://images.unsplash.com/photo-1488459716781-31db52582fe9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80');
@@ -29,7 +30,7 @@ const StyledHome = styled.div `
     width: 80%;
     margin: 0 auto;
     background-color: rgba(255,255,255,.65);
-    padding: 1rem;
+    padding: 0.5rem;
     color: #000;
     font-weight: bold;
   }
@@ -62,22 +63,23 @@ const StyledHome = styled.div `
   #home-content {
     display: flex;
     justify-content: space-between;
-    padding-top: 10px;
-    height: 65%;
+    height: 60%;
   }
 
   .container {
+    margin-top: 2rem;
     width: 30%;
-    padding: 2px;;
-    background-color: #f4c5be;
+    background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 
   .container img {
-    width: 70%;
+    width: 100%;
+    height:80%;
   }
 
   .container p {
@@ -110,21 +112,25 @@ export default function Home() {
         </div>
       </div>
       </header>
+
+
       <div id='home-content'>
         <div id='container1' className='container'>
-          <h2>Account Access</h2>
+          {/* <h2>Account Access</h2> */}
           <img src='https://images.unsplash.com/photo-1618060932014-4deda4932554?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80'/>
           <p>Create a new account or login with a current account to access your personal marketplace and make changes. </p>
         </div>
+
         <hr></hr>
         <div id='container2' className='container'>
-          <h2>Browser Market Items</h2>
+          {/* <h2>Browser Market Items</h2> */}
           <img src='https://images.unsplash.com/photo-1543083477-4f785aeafaa9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80'/>
           <p>Browse hundreds of market items from multiple locations.</p>
         </div>
+
         <hr></hr>
         <div id='container3' className='container'>
-          <h2>Sell Items in Your Market</h2>
+          {/* <h2>Sell Items in Your Market</h2> */}
           <img src='https://images.unsplash.com/photo-1616077167599-cad3639f9cbd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80'/>
           <p>With an African Makert account, business owners can easily post new items for sale daily.</p>
         </div>

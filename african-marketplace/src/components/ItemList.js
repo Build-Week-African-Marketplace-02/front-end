@@ -7,7 +7,7 @@ import styled from 'styled-components';
 const StyledItemList= styled.div`
 height: 100%;
 padding: .2rem 1rem;
-box-shadow:5px 10px 8px 10px #888888;
+background-color:#eeeeee;
 
 header {
   background-image:url('https://images.unsplash.com/photo-1488459716781-31db52582fe9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80');
@@ -54,7 +54,7 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: stretch;
+  align-items: center;
   height: 70%;
   margin-top: 20px;
 }
@@ -63,7 +63,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #f4c5be;
+  border: 2px solid #f4c5be;
   height: 40%;
   padding: 0 10px;
   margin: 10px 5px;

@@ -4,9 +4,11 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
+import FontStyle from './theme/FontStyle'
 
 ReactDOM.render(
   <Router>
+    <FontStyle />
     <App />
   </Router>,
   document.getElementById("root")
