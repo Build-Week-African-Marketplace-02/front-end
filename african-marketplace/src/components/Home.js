@@ -1,6 +1,15 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
+import { createGlobalStyle } from "styled-components";
+
+export const FontStyle = createGlobalStyle`
+@font-face {
+  font-family: 'Architects Daughter', cursive;
+  src: url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap') ,
+   
+}
+`
 
 const StyledHome = styled.div `
   height: 100vh;

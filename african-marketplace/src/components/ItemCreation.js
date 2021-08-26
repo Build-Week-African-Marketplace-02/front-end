@@ -121,7 +121,7 @@ export default function ItemCreation(props) {
 
       <div id='form-container'>
       <form onSubmit={handleSubmit}>
-        <h2>Add an item</h2>
+        <h2>Add Item</h2>
 					<div className="form-group">
 						<input value={item.item_name} onChange={handleChange} name="item_name" type="text" placeholder='item name'/>
 					</div>
