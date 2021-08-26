@@ -49,7 +49,7 @@ const StyledHome = styled.div `
     font-size: 1em;
     }
 
-    button:hover{
+  button:hover{
     background-color: #6ba393;
     color: #f4c5be;
     }
@@ -78,7 +78,6 @@ const StyledHome = styled.div `
 
   .container img {
     width: 70%;
-   
   }
 
   .container p {
