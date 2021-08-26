@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
 const StyledHome = styled.div `
-  height: 75vh;
+  height: 100vh;
   padding: .5rem 1rem;
   box-shadow:5px 10px 8px 10px #888888;
 
@@ -12,7 +12,6 @@ const StyledHome = styled.div `
     background-repeat: no-repeat;
     background-size: cover;
     height: 30%;
-    
   }
 
   h1 {
@@ -46,12 +45,13 @@ const StyledHome = styled.div `
     justify-content:center;
     border-radius:5px;
     background-color:#f4c5be;
+    color: #6ba393;
     font-size: 1em;
     }
 
     button:hover{
     background-color: #6ba393;
-    color: white;
+    color: #f4c5be;
     }
 
   #home-buttons {
