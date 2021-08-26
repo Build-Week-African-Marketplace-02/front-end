@@ -117,10 +117,7 @@ export default function Signup() {
   };
   //POST new user
   const postNewUser = newUser => {
-    //eventual POST request using axios will go here
-    axios
-
-      .post("https://african-marketplace-44.herokuapp.com/api/auth/register", newUser)
+    axios.post("https://african-marketplace-44.herokuapp.com/api/auth/register", newUser)
         .then(res => {
           setUsers([res.data, ...users]);
           push('/login')
@@ -141,11 +138,6 @@ export default function Signup() {
     };
     postNewUser(newUser);
   };
-  //side effects
-
-  // useEffect(() => {
-  //   SignupSchema.isValid(formValues).then(valid => setDisabled(!valid));
-  // }, [formValues]);
 
   const onSubmit = e => {
     e.preventDefault();
@@ -161,13 +153,6 @@ export default function Signup() {
     <StyledSignup>
     <div className="signup container">
       <h1>Sign Up</h1>
-      {/* <Link to="/login">
-        <button id="login-btn">Login!</button>
-      </Link>
-      <Link to="/">
-        <button id="home-btn">Home</button>
-      </Link> */}
-      {/* <h3>Sign Up:</h3> */}
       <form id="signup-form" onSubmit={onSubmit}>
         <div className="form-group submit">
           <div className="errors">
@@ -197,9 +182,6 @@ export default function Signup() {
             Sign Up
           </button>
       </form>
-      {/* {users.map((user, index) => {
-        return <User key={index} details={user} />;
-      })}{" "} */}
     </div>
     </StyledSignup>
   );
