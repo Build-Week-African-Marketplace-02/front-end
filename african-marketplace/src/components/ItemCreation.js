@@ -79,7 +79,7 @@ export default function ItemCreation(props) {
     item_description: '',
     item_price: '',
     item_country: '',
-    item_seller: '',
+    username: '',
   })
 
   const handleChange = e => {
@@ -98,7 +98,7 @@ export default function ItemCreation(props) {
             item_description: item.item_description,
             item_price: item.item_price,
             item_country: item.item_country,
-            item_seller: item.item_seller,
+            username: item.username,
         }
 
         axios.post(`https://african-marketplace-44.herokuapp.com/api/items/`, newItem)
@@ -126,11 +126,11 @@ export default function ItemCreation(props) {
 						<input value={item.item_price} onChange={handleChange} name="item_price" type="text" placeholder='price'/>
 					</div>
           <div className="form-group">
-						<input value={item.item_seller} onChange={handleChange} name="item_seller" type="text" placeholder='seller name'/>
+						<input value={item.username} onChange={handleChange} name="username" type="text" placeholder='seller name'/>
 					</div>
 					<div className="form-group">
 						<select value={item.item_country} onChange={handleChange} name="item_country" type="text" placeholder='country'>
-            <option value="">-- Select Market Location</option>
+            <option value="">--Select Market Location--</option>
             <option value="KEN">KEN</option>
             <option value="SSD">SSD</option>
             <option value="UGA">UGA</option>
