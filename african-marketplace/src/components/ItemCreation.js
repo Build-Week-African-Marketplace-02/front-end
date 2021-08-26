@@ -8,7 +8,13 @@ const StyledItemCreation = styled.div`
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
+height:80vh;
+
+#form-container {
+  padding:5rem;
+  height:50vh;
+  box-shadow:5px 10px 8px 10px #888888;
+}
 
 button{
   display:flex;
@@ -113,7 +119,7 @@ export default function ItemCreation(props) {
   return (
     <StyledItemCreation>
 
-      <div>
+      <div id='form-container'>
       <form onSubmit={handleSubmit}>
         <h2>Add an item</h2>
 					<div className="form-group">
