@@ -118,7 +118,7 @@ export default function Home() {
         <div id='container1' className='container'>
           {/* <h2>Account Access</h2> */}
           <img src='https://images.unsplash.com/photo-1618060932014-4deda4932554?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80'/>
-          <p>Create a new account or login with a current account to access your personal marketplace and make changes. </p>
+          <p>Create a new account/login with a current account to access your personal marketplace. </p>
         </div>
 
         <hr></hr>
@@ -132,7 +132,7 @@ export default function Home() {
         <div id='container3' className='container'>
           {/* <h2>Sell Items in Your Market</h2> */}
           <img src='https://images.unsplash.com/photo-1616077167599-cad3639f9cbd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80'/>
-          <p>With an African Makert account, business owners can easily post new items for sale daily.</p>
+          <p>With an African Market account, business owners can easily post new items for sale daily.</p>
         </div>
       </div>
       
