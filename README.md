@@ -1,5 +1,5 @@
 # front-end African Marketplace
 
-*cd into african-marketplace
-*run npm i to install any dependancies
-*run npm start 
+1. cd into african-marketplace
+2. run npm i to install any dependancies
+3. run npm start 
