@@ -99,13 +99,13 @@ export default function ItemCreation(props) {
     e.preventDefault();
         push('/item-list')
         const newItem = {
-            id: Date.now(),
-            item_name: item.item_name,
-            item_description: item.item_description,
-            item_price: item.item_price,
-            item_country: item.item_country,
-            username: item.username,
-        }
+          item_country: item.item_country,
+          item_description: item.item_description,
+          item_name: item.item_name,
+          item_price: item.item_price,
+          username: item.username,
+        };
+        console.log(newItem)
 
         axios.post(`https://african-marketplace-44.herokuapp.com/api/items/`, newItem)
             .then(res => {
