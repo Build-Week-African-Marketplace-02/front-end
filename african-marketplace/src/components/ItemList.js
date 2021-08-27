@@ -64,7 +64,6 @@ button:hover {
   flex-direction: column;
   justify-content: center;
   border: 2px solid #f4c5be;
-  height: 40%;
   padding: 0 10px;
   margin: 10px 5px;
 }
