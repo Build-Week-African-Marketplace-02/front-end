@@ -90,8 +90,6 @@ const StyledHome = styled.div `
     color: #6ba393;
     font-weight: bold;
   }
-
-  
 `
 
 export default function Home() {
