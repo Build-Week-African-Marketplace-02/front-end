@@ -105,16 +105,6 @@ export default function Login() {
     });
   };
 
-  //POST new user
-
-    //eventual POST request using axios will go here
-  //   setUser([loggedUser, ...user]);
-  //   setFormValues(initialFormValues);
-  // };
-
-
-  //Sign up button submit
-  // const login = () => {
     const postLoggedUser = loggedUser => {
       axios
       .post("https://african-marketplace-44.herokuapp.com/api/auth/login", user.credentials)
@@ -158,12 +148,6 @@ export default function Login() {
     <form id="login-container" onSubmit={onSubmit}>
       <div className='loginDiv'>
       <h1>User Login</h1>
-      {/* <Link to="/signup">
-        <button className="signup-link">Sign Up</button>
-      </Link> /}
-      {/ <div className="form-group login-submit">
-        <button id="login-button">Login</button>
-      </div> */}
       <div className="form-group login-inputs">
 
           <input
